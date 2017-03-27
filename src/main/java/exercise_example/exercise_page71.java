@@ -4,6 +4,7 @@ import edu.princeton.cs.algs4.Interval1D;
 import edu.princeton.cs.algs4.Point2D;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 /**
@@ -47,9 +48,64 @@ public class exercise_page71 {
         }
 
         String str = "AGCAC";
-        System.out.print(str.indexOf('C'));
+        System.out.println(str.indexOf('C'));
+
+        System.out.println(str.substring(0,2));
 
         // circular rotation
+        String str1 = "ACTGACG";
+        String str2 = "TGACGAC";
+        System.out.println(circular2(str1, str2));
+
+        System.out.println(mystery("ioperwec"));
+    }
+
+    public static boolean circular2(String stra, String strb){
+        if (stra.isEmpty() || strb.isEmpty()) return false;
+        if (stra == null || strb == null) return false;
+        if (stra.length() != strb.length()) return false;
+        if (stra.equals(strb)) return true;
+        if ((stra.length() == strb.length()) && (stra.concat(stra).indexOf(strb) >= 0)){
+            return true;
+        } else {
+            return false;
+        }
 
     }
+
+    public static String mystery(String s){
+        int N = s.length();
+        if (N <= 1) return s;
+        String a = s.substring(0, N/2);
+        String b = s.substring(N/2, N);
+        return mystery(b) + mystery(a);
+    }
+
+    /**
+    public boolean circular(String stra, String strb){
+        if (stra.isEmpty() || strb.isEmpty()) return false;
+        if (stra == null || strb == null) return false;
+        if (stra.length() != strb.length()) return false;
+        if (stra.equals(strb)) return true;
+        char[] strbArray = strb.toCharArray();
+
+        // 以stringA 为主，查找stringB 第一个字符实在A中位置
+        int stra1st = stra.indexOf(strb.charAt(0));
+        int straend = stra.lastIndexOf(strb.charAt(0));
+
+        if (stra1st == straend){
+            String straTmp = stra.substring(stra1st,stra.length()).concat(stra.substring(0,stra1st));
+            if (straTmp.equals(strb)){
+                return true;
+            } else {
+                return false;
+            }
+        }else {
+
+        }
+        return false;
+
+
+    }
+    ***/
 }

@@ -7,6 +7,7 @@ import java.util.Stack;
  * Created by baobao on 2017/3/27.
  */
 public class Stack_solution {
+
     public static class StackNode {
         int val;
         int curMax;
